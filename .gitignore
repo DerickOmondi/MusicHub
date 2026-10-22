@@ -1,0 +1,68 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+/generated/prisma
+
+
+# Secrets and environment variables
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+client/node_modules/
+
+# Build output
+dist/
+client/dist/
+build/
+client/build/
+coverage/
+
+# Local databases and backups
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite-*
+
+# User-uploaded files
+uploads/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local editor files
+.vscode/
+.idea/
+
+
+
+# Local database backups
+*.db.backup-*
+*.bak
+*.backup
+
+# Local AI assistant and editor workspace data
+.agents/
+.claude/
+.windsurf/
+
+# Local source backups
+*.bak
+*.bak-*
+
+# Payment helper scripts pending security review
+/add-mpesa-routes.ps1
+/check-mpesa-oauth.cjs
+/check-payment.cjs
+/src/add-mpesa-routes.ps1

@@ -1,0 +1,58 @@
+// Update Booking Model to support dynamic quotes & selected services
+model Booking {
+  id           String          @id @default(uuid())
+  clientName   String
+  clientEmail  String
+  clientPhone  String
+  eventType    String
+  eventDate    DateTime
+  location     String
+  status       String          @default("PENDING") // PENDING, CONFIRMED, CANCELLED
+  totalAmount  Int             @default(0)
+  depositPaid  Int             @default(0)
+  notes        String?
+  services     BookingService[]
+  payments     Payment[]
+  createdAt    DateTime        @default(now())
+}
+
+// Company Services & Equipment Catalog
+model Service {
+  id           String          @id @default(uuid())
+  name         String
+  category     String          // e.g., "DJ & MC", "Sound & Audio", "Tents & Decor", "Live Band"
+  description  String
+  basePrice    Int             // Price in KES
+  unit         String          @default("event") // "event", "day", "hour"
+  imageUrl     String?
+  isAvailable  Boolean         @default(true)
+  createdAt    DateTime        @default(now())
+  bookings     BookingService[]
+}
+
+// Junction table linking Bookings to selected Services
+model BookingService {
+  id        String  @id @default(uuid())
+  bookingId String
+  serviceId String
+  quantity  Int     @default(1)
+  price     Int
+  booking   Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  service   Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([bookingId])
+  @@index([serviceId])
+}
+
+// Portfolio & Past Event Showcase Collection
+model EventPortfolio {
+  id          String   @id @default(uuid())
+  title       String
+  eventType   String
+  location    String
+  eventDate   DateTime
+  description String
+  imageUrl    String
+  videoUrl    String?
+  createdAt   DateTime @default(now())
+}
