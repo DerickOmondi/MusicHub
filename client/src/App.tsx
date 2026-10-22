@@ -26,8 +26,6 @@ import {
   Users,
   MessageSquare,
   ThumbsUp,
-  Radio,
-  Search,
   Sparkles,
   Home,
   Briefcase,
@@ -767,22 +765,24 @@ export default function App() {
       />
 
       <ArtistAuthModal
-        isOpen={isAuthOpen}
-        onClose={() => setIsAuthOpen(false)}
-        onSuccess={handleArtistRegisterSuccess}
-      />
+    isOpen={isAuthOpen}
+    onClose={() => setIsAuthOpen(false)}
+    onRegisterSuccess={handleArtistRegisterSuccess}
+/>
 
-      {currentPlaying && (
-        <AudioPlayerBar
-          currentPlaying={currentPlaying}
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          audioRef={audioRef}
-          currentTime={currentTime}
-          setCurrentTime={setCurrentTime}
-          formatTime={formatTime}
-        />
-      )}
+{currentPlaying && (
+  <AudioPlayerBar
+    currentPlaying={currentPlaying}
+    isPlaying={isPlaying}
+    setIsPlaying={setIsPlaying}
+    audioRef={audioRef}
+    currentTime={currentTime}
+    setCurrentTime={setCurrentTime}
+    duration={audioRef.current?.duration || 0}
+    setCurrentPlaying={setCurrentPlaying}
+    formatTime={formatTime}
+  />
+)}
     </div>
   );
-}
+}  

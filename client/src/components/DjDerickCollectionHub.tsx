@@ -14,7 +14,6 @@ import {
   Video,
   X,
   Play,
-  Lock
 } from "lucide-react";
 
 interface Mixtape {

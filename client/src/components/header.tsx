@@ -12,7 +12,6 @@ import {
   MessageSquare,
   Calendar,
   Search,
-  ShieldCheck
 } from "lucide-react";
 
 interface HeaderProps {
